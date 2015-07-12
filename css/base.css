@@ -1,0 +1,102 @@
+/*
+* reset
+* common
+* page
+* hack
+*/
+
+/* reset s */
+html, body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, legend, input, button, textarea, p, blockquote, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video, details, summary { -webkit-tap-highlight-color:rgba(0,0,0,0); margin: 0; padding: 0;}
+section, article, aside, header, footer, nav, dialog, figure { display: block; }
+ol, ul, li { list-style: none; }
+img, iframe, fieldset { border: none; }
+button, input, select, textarea { -webkit-user-select:text;}
+:focus{ outline:none;}
+/* reset e */
+
+/* common s */
+html,body{ min-height:100%;}
+/*body*/
+body {-webkit-user-select:none; -webkit-text-size-adjust:none; color:#fff; font-size:100%;background:none; font-family:"microsoft yahei";} 
+/*link*/
+a,a:visited{ text-decoration:none; outline:none;color:#fff;}
+/*clear*/
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+/* common e */
+
+/* page s */
+/*欢迎页*/
+.welcome{min-height:100%;background-image: -webkit-radial-gradient(#4ac0f8,#00307c);background-image: radial-gradient(#4ac0f8,#00307c);}
+.welcome .bg{ position:absolute;width: 100%; height: 100%;background:url(../images/snowMuntain.png) left bottom no-repeat; background-size:100% auto;}
+.welcome .cont{ position:relative; z-index:1;}
+.welcome .logo{background:url(../images/logo.png) no-repeat; background-size:100px auto;text-indent: -9999em;margin:15px 0 0 20px;}
+.welcome .path{margin:0px 10px; height:auto; max-width:100%;} 
+.welcome .tips{ color:#00479d; text-align:center; position:fixed;bottom:42px; width:100%; font-size:0.750em;}
+.welcome .tips .bold{font-size:1.167em;}
+  
+/*主页*/
+/*背景图片轮播*/
+.bgSlider{position:absolute;width: 100%; height: 100%;background:-webkit-gradient(linear,0 0,0 100%,from(#090f3d),to(#2690d4));}
+.bgSlider .bg{ background:#db290a; width:80%;height:30px;left:10%; position:fixed; bottom:-20px; border-radius:100%; }
+.bgSlider .img li{background-size:cover;float:left;position:absolute;width: 100%; height: 100%;top:0;left:0;}
+.bgSlider .one{ background:url(../images/climber3.png);/*实现图片不变形，需要去掉上面的cover，这里设置backgroud-size:100% auto；其他空白地方使用渐变颜色填充*/}
+.bgSlider .two{}
+.bgSlider .three{}
+
+.bgSlider .num{width:56px; position:fixed; bottom:20px; left:50%; margin-left:-28px;}
+.bgSlider .num li{ float:left; background:#6f99cb;width:10px; height:10px; text-indent:-9999em; border-radius:50%;-webkit-border-radius:50%; margin:4px;}
+.num li:hover,.num li.hover{ background:#00439b;}
+
+
+/*导航*/
+.index .nav{ position:relative; z-index:2;}
+.index .nav li{width:33.3%; float:left; text-align:center; /*border:1px solid red;*/ margin:10px auto 15px;overflow:hidden;}
+.index .nav a{ display:block;}
+.nav .title{font-size:1em; font-weight:normal;margin-bottom: 2px;}
+.nav .des{ font-size:0.75em; white-space:nowrap; overflow:hidden;text-overflow: ellipsis;}
+.nav .icon{display:inline-block; width:72px; height:60px;background:url(../images/navIcon.png) no-repeat; background-size:cover;}
+.nav .invitation{ background-position:2px 0;}
+.nav .game{background-position:6px -60px;}
+.nav .test{background-position:13px -144px;}
+.nav .news{background-position:8px -208px;}
+.nav .creative{background-position:6px -282px;}
+.nav .gifts{background-position:13px -360px;}
+.nav .beautyView{background-position:6px -430px;}
+
+
+.container{background-image: -webkit-radial-gradient(#00a0e9,#00307c);background-image: radial-gradient(#00a0e9,#00307c);}
+/*进入主页过程1*/
+.enterindex .banner{ background:#fff; height:160px;}
+.banner .imgslider{ padding:12px 12px 0;height:104px; overflow:hidden; position:relative;}
+.imgslider li{ float:left; }
+.imgslider img{ max-width:100%; vertical-align:middle;}
+.imgslider .btn{position:absolute;top:12px; display:block; height:104px; line-height:104px;width:30%; font-size:1.875em; }
+.imgslider .btn.prev{ left:12px;padding-left:5px;}
+.imgslider .btn.next{ right:12px;padding-right:5px;text-align: right;}
+
+.progressbar li{ float:left; border-top:2px solid #f4a7ac; color:#f4a7ac; position:relative; margin-top:22px; text-align:center; font-size:0.75em;}
+.progressbar .num{ display:block; position:absolute; top:-22px; width:100%;}
+.progressbar .local{ display:block;max-width:48px;padding: 0 2px;}
+.progressbar li:after{ content:" "; position:absolute;width:6px; height:6px; background:#f4a7ac; border-radius:50%;top:-4px; left:50%; margin-left:-3px;}
+
+/*进入主页过程2*/
+
+/*自己生成图片*/
+
+/* page e */
+
+/* hack s */
+/*iphone6,iphone6 plus*/
+@media only screen and (min-width: 374px) {
+	.welcome .logo{background-size:110px auto;}.welcome .tips{font-size:0.875em;;bottom: 54px;}
+    .nav .des{font-size:0.875em; }
+} 
+
+/* hack e */
+
+
+
+
+
+
+
