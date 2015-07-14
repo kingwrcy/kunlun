@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-13 21:02:18
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-13 23:51:01
+* @Last Modified time: 2015-07-14 10:06:23
 */
 
 ~function(){
@@ -15,7 +15,13 @@
 	var MAXSIZE = 3 * 1024 *1024;
 	var imgUri = null;
 	var originalWidth,originalHeight;
+	var mc = new Hammer(area,{
+		drag_block_horizontal: true,
+        drag_block_vertical: true,
+        drag_min_distance: 0
+	});
 
+	mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 	uploadBtn.addEventListener('change',function(e){
 		var file = e.target.files[0];
 		var type = file.type;
@@ -40,19 +46,18 @@
 		f.readAsDataURL(file);
 	});
 
-	$(area).bind('tapstart',function(e,touch){
-		x = touch.position.x;
-		y = touch.position.y;
+	mc.on('panstart',function(e){
+		e.preventDefault();
 		start = true;
 		left = $(area).position().left;
 		top = $(area).position().top;
 	});
 
-	$(area).bind('tapmove',function(e,touch){
+	mc.on('panmove',function(e){
+		e.preventDefault();
 		if(start){
-			// console.log('before:',left );
-			var move_left = touch.position.x - x + left;
-			var move_top = touch.position.y -y + top;
+			var move_left = e.deltaX + left;
+			var move_top = e.deltaY + top;
 
 			move_left = Math.min(Math.max(0,move_left),areaParent.width() - $(area).width());
 			move_top = Math.min(Math.max(0,move_top),areaParent.height() - $(area).height());
@@ -62,11 +67,11 @@
 				top:move_top + 'px'
 			});
 
-			// console.log('after:',$(area).offset().left );
 		}
 	})
 
-	$(area).bind('tapend',function(e){
+	mc.on('panend',function(e){
+		e.preventDefault();
 		if(start){
 			start = false;
 		}

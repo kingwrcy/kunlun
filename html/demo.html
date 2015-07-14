@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="msapplication-tap-highlight" content="no" />
         <style>
 			.wrap{
 				width:310px;
@@ -40,7 +41,7 @@
 			}
         </style>
         <script src="../js/jquery.min.js"></script>
-		<script src="../js/jquery.mobile-events.min.js"></script>
+		<script src="../js/hammer.min.js"></script>
     </head>
     <body>
 
@@ -54,5 +55,26 @@
     		</div>
     	</div>
     	<script src="../js/upload.js"></script>
+    	<!-- <script>
+    		var myElement = document.getElementById('area');
+			var mc = new Hammer(myElement,{
+				drag_block_horizontal: true,
+		        drag_block_vertical: true,
+		        drag_min_distance: 0
+			});
+			var x1,y1,x2,y2;
+			mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
+			mc.on('panstart',function(e){
+				x1 = $(myElement).position().left;
+				y1 = $(myElement).position().top;
+			})
+			mc.on('panmove',function(e){
+				myElement.style.left = x1 + e.deltaX +'px';
+				myElement.style.top = y1 + e.deltaY +'px';
+			})
+
+			
+    	</script> -->
     </body>
 </html>
