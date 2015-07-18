@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-17 13:57:34
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-17 19:58:46
+* @Last Modified time: 2015-07-18 18:46:59
 */
 
 $(function(){
@@ -66,7 +66,7 @@ $(function(){
     // }
     
     if(storage && storage.getItem('username')){
-		window.location.href = 'list.html';
+		//window.location.href = 'list.html';
 	}
 
     $("path[id^=circle],path[id^=node],text[id^=text]").click(function(){
@@ -101,15 +101,20 @@ $(function(){
 			alert('请填写正确的电话号码');
 			return;
 		}
-		$("#reg").hide();
-		window.location.href = 'list.html';
-		// $.post('http://k3.limijiaoyin.com/api/third/user',{name:username,phone:tel}).done(function(data){
-		// 	if(data.code === 0){
-		// 		storage.setItem('username',username);
-		// 		alert('注册成功!');
-		// 		window.location.href = 'list.html';
-		// 	}
-		// });
+		$.ajax({
+			type:'POST',
+			url:'http://k3.limijiaoyin.com/api/third/user/',
+			data:{name:username,phone:tel},
+			success:function(data){
+				if(data.code === 0){
+					storage.setItem('username',username);
+					window.location.href = 'list.html';
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert('很抱歉，信息没有提交成功');
+			}
+		});
 	});
 
 

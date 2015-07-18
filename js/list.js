@@ -2,102 +2,15 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-17 19:46:00
+ * @Last Modified time: 2015-07-18 18:05:45
  */
 
 
 ~ function() {
-	var json = {
-		"code": 0,
-		"cards": [{
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 100,
-			"share": 300,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 334,
-			"share": 441,
-			"template": 2
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 22,
-			"share": 3334,
-			"template": 2
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 433,
-			"share": 443,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 100,
-			"share": 300,
-			"template": 2
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 134,
-			"share": 34,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 4234,
-			"share": 784,
-			"template": 2
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 43245,
-			"share": 545,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 67,
-			"share": 4343,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 43,
-			"share": 321,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 43,
-			"share": 321,
-			"template": 1
-		}, {
-			"id": "1",
-			"img": "http://lorempixel.com/100/106/",
-			"desc": "用户描述",
-			"fav": 43,
-			"share": 321,
-			"template": 1
-		}]
-	};
+	var start = 0;
 	var el = $("#scroller-content");
 	var myScroll;
-	var tmpl = '<% for(var i = 0 ;i <data.length ;i++){ %><li>' +
+	var tmpl = '<% for(var i = 0 ;i <data.length ;i++){ %><li  vid="<%= data[i].id %>" >' +
 		' <a href="#">' +
 		'<div class="picshow <%= data[i].template == "1" ? "model1" : "model2"  %>">' +
 		' <figure class="figure">' +
@@ -111,26 +24,40 @@
 		'</div>' +
 		'</a>' +
 		'<div class="actions">' +
-		'<a href="#"><div class="fav"><span class="icon"></span><%= data[i].fav %></div></a>' +
-		'<a href="#"><div class="share"><span class="icon"></span><%= data[i].share %></div></a>' +
+		'<a href="#"><div class="fav"><span class="icon"></span><span class="upnum"><%= data[i].upnum %></span></div></a>' +
+		'<a href="#"><div class="share"><span class="icon"></span><span class="sharenum"><%= data[i].sharenum %></span></div></a>' +
 		'</div>' +
 		'</li><% }%>';
 
-	function render(data) {
+	function render(limit) {
 		var compiled = _.template(tmpl);
-		var html = compiled({
-			data: data
-		});
-		$("#scroller-content ul").append(html);
-		var len = $("#scroller-content li").length;
-		var last = (len % 3) || 3;
-		var lis = el.find('li').toArray().reverse();
-		for (var i = 0; i < last; i++) {
-			$(lis[i]).addClass('noborder');
-		}
+		$.getJSON('http://k3.limijiaoyin.com/api/third/cards/',{start:start,limit:limit},function(data){
+			if(data.cards.length == 0){
+				// $("#scroller-pullUp").hide();
+				return;
+			}
+			start += data.cards.length;
+			var html = compiled({
+				data: data.cards
+			});
+			$("#scroller-content ul").append(html);
+			var len = $("#scroller-content li").length;
+			var last = (len % 3) || 3;
+			var lis = el.find('li').toArray().reverse();
+			for (var i = 0; i < last; i++) {
+				$(lis[i]).addClass('noborder');
+			}
+			if($("#scroller-content li").length >=9){
+				$("#scroller-pullUp").show();
+			}else{
+				$("#scroller-pullUp").hide();
+			}
+			myScroll.refresh();
+		})
+		
 	}
-
-	render(json.cards);
+	loaded();
+	render(8);
 
 	function loaded() {
 
@@ -153,8 +80,7 @@
 			if (this.maxScrollY - this.y > 40) {
 				// upIcon.removeClass("reverse_icon")
 				$("#scroller-content li").slice(-3).removeClass('noborder');
-				render(json.cards);
-				myScroll.refresh();
+				render(9);
 				// $("#back").show();
 			}
 		});
@@ -272,11 +198,28 @@
 		$('#chooseTemplate .signature .name').text('叶小萌');
 	});
 
+	// $("#wrapper").on('click',".fav .icon",function(e){
+
+	// });
+
 	$("#cropReset").click(function(){
 		$('#originalimg').cropper('reset');
 	});
 
-	$('#scroller-content').on('click','li',function(){
+	$('#scroller-content').on('click','li',function(e){
+
+		if(e.target.tagName === 'SPAN' && e.target.classList.contains('icon')){
+			var fav = $(e.target).next();
+			var id = $(e.target).parents("li").attr('vid');
+			e.stopPropagation();
+			$.post('/api/third/up/',{id:id},function(){
+				fav.text(function(index,text){
+					return parseInt(text)+1;
+				});
+			})
+			return;
+		}
+
 		var index = $(this).index();
 		if(index > 0){
 			$('.enterindex').hide();
@@ -284,7 +227,10 @@
 			$('#detail #detailimg').attr('src',$(this).find('.figure img').attr('src'));
 			$('#detail .signature .name').text($(this).find('.signature .name').text());
 			$('#detail .textarea .text').text($(this).find('.signature').attr('desc'));
+			$('#detail .sharenum').text($(this).find('.sharenum').text());
+			$('#detail .upnum').text($(this).find('.upnum').text());
 		}
+
 	});
 
 
@@ -296,23 +242,38 @@
 		$('#detail #detailimg').attr('src',b64);
 		$('#detail .signature .name').text($('#chooseTemplate .signature .name').text());
 		$('#detail .textarea .text').text($('#chooseTemplate textarea').val());
-		// putb64(b64);
+		putb64(b64);
 	});
 
 	function putb64(pic){
 	    var url = "http://up.qiniu.com/putb64/-1";
 	    var xhr = new XMLHttpRequest();
-	    xhr.onreadystatechange=function(){
-	        if (xhr.readyState==4){
-	            console.log(xhr.responseText);
-	        }
-	    }
-	    xhr.open("POST", url, true); 
-	    xhr.setRequestHeader("Content-Type", "image/jpeg"); 
-	    xhr.setRequestHeader("Authorization", "UpToken UNIFT3Dh3-4HYCR-OjoSADE8wPdu56O69AnQGr_j:Q1zusXQv4_rF4It-21LzL9P5Ntg=:eyJzY29wZSI6ImRvdGFmYW5zIiwiZGVhZGxpbmUiOjE0MzY4MDYyNTF9"); 
-	    xhr.send(pic.split(',')[1]);
+	    var token = null;
+
+	    $.get('http://k3.limijiaoyin.com/api/third/token/',function(data){
+	    	if(data.code == 0){
+	    		xhr.onreadystatechange=function(){
+			        if (xhr.readyState==4){
+			        	$.post('http://k3.limijiaoyin.com/api/third/cards/',{
+			        		img:'http://7xkb2g.com1.z0.glb.clouddn.com/'+JSON.parse(xhr.responseText).hash,
+			        		desc:$("#chooseTemplate textarea").val(),
+			        		template:$("#chooseTemplate .name").text() === '叶小萌' ? 1 : 0	
+			        	},function(data){
+			        		if(data.code == 0){
+			        			alert('上传成功!');
+			        		}
+			        	})
+			        }
+			    }
+			    xhr.open("POST", url, true); 
+			    xhr.setRequestHeader("Content-Type", "image/jpeg"); 
+			    xhr.setRequestHeader("Authorization", "UpToken "+data.token); 
+			    xhr.send(pic.split(',')[1]);
+	    	}
+	    })
+	    
 	}  
 
 
-	loaded();
+	
 }();
