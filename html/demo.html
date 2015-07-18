@@ -19,25 +19,23 @@
 			}
 
 			.upload img{
-				width:100%;
-				height:100%;
+				position:absolute;
 			}
 
 			.area{
-				width:150px;
-				height:150px;
+				width:250px;
+				height:250px;
 				border:1px dashed red;
 				position:absolute;
 				z-index:10;
-				left:50px;
-				top:50px;
+				left:20px;
+				top:20px;
 				cursor:move;
 			}
 
-			.ok{
-				position:absolute;
-				right:10px;
-				bottom:10px;
+			#ok{
+				color:red;
+				width:120px;
 			}
         </style>
         <script src="../js/jquery.min.js"></script>
@@ -46,35 +44,20 @@
     <body>
 
     	<div class="wrap">
-    		<input type="file" id="upload_file">
+    		<input type="file" id="upload_file" accept="image/*">
 
     		<div class="upload" id="upload_area">
-    			<div class="area" id="area">
-    				<div class="ok" id="ok">ok</div>
-    			</div>
+    			<!-- <div class="area" id="area">
+    			</div> -->
     		</div>
+
+    		<div class="result"></div>
     	</div>
+
+		<button id="ok">ok</button>
+    	<canvas id="canva"></canvas>
+    	<script src="../js/exif.js"></script>
+		<script src="../js/megapix-image.js"></script>
     	<script src="../js/upload.js"></script>
-    	<!-- <script>
-    		var myElement = document.getElementById('area');
-			var mc = new Hammer(myElement,{
-				drag_block_horizontal: true,
-		        drag_block_vertical: true,
-		        drag_min_distance: 0
-			});
-			var x1,y1,x2,y2;
-			mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-
-			mc.on('panstart',function(e){
-				x1 = $(myElement).position().left;
-				y1 = $(myElement).position().top;
-			})
-			mc.on('panmove',function(e){
-				myElement.style.left = x1 + e.deltaX +'px';
-				myElement.style.top = y1 + e.deltaY +'px';
-			})
-
-			
-    	</script> -->
     </body>
 </html>

@@ -3,237 +3,291 @@
 <head>
 <meta charset="utf-8">
 <title>昆仑山微站</title>
+<meta http-equiv="Content-Language" content="zh-cn">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="keywords"content="昆仑山"> 
 <meta name="description"content="昆仑山微站"> 
 <link rel="stylesheet" type="text/css" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/swiper.min.css">
+<link rel="stylesheet" href="../css/cropper.min.css">
+<style>
+    #wrapper {
+    position: absolute;
+    z-index: 1;
+    top: 164px;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+#scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+#scroller-pullDown,#scroller-pullUp {
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #888;
+    text-align:center;
+    position:absolute;
+    left:0px;
+    width:100%;
+}
+#scroller-pullDown{
+    top:-40px;
+}
+#scroller-pullUp{
+    bottom:-40px;
+}
+
+#scroller-pullDown .pull-up-msg,#scroller-pullUp .pull-down-msg {
+    padding-left:20px;
+}
+
+#scroller-pullDown .pull-down-icon,#scroller-pullUp .pull-up-icon{
+    display:inline-block;
+    color:#f00;
+    font-size:1.4;
+    -webkit-transform:rotate(0deg);
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 500ms;
+}
+#scroller-pullDown .pull-down-icon.reverse_icon,#scroller-pullUp .pull-up-icon.reverse_icon{
+    -webkit-transform: rotate(-180deg);
+}
+
+#back{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    display:none;
+    z-index:100;
+}
+
+#cropimg,#chooseTemplate,#detail{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:none;
+    z-index:101;
+}
+.cropper-drag-box.cropper-modal.cropper-move{
+  position:fixed;
+}
+</style>
 </head>
 
 <body class="container">
+
   <div class="enterindex">
     <!--banner s-->
+
     <div class="banner">
-        <!--imgslider s-->
-        <div class="imgslider">
-           <div class="img">
-              <ul class="clearfix">
-                 <li><img src="../images/temp/1.jpg"></li>
-                 <li><img src="../images/temp/1.jpg"></li>
-                 <li><img src="../images/temp/1.jpg"></li>
-              </ul>
-           </div>
-           <div class="button">
-              <a class="btn prev">&lt;</a>
-              <a class="btn next">&gt;</a>
-           </div>
+        <!-- Slider main container -->
+        <div class="swiper-container imgslider">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide"><img src="../images/temp/1.jpg"></div>
+                <div class="swiper-slide"><img src="../images/temp/1.jpg"></div>
+                <div class="swiper-slide"><img src="../images/temp/1.jpg"></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+            
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <!--imgslider e-->
-        
-        <!--progressbar s-->
-       <!-- <div class="progressbar">
-           <ul>
-             <li class="hover">
-                 <span class="local">西宁<br>启程</span>
-             </li>
-             <li  class="hover">
-                 <span class="num">1</span>
-                 <span class="local">日月山</span>
-             </li>
-             <li class="hover">
-                 <span class="num">2</span>
-                 <span class="local">倒淌河</span>
-             </li>
-             <li>
-                 <span class="num">3</span>
-                 <span class="local">沙岛</span>
-             </li>
-             <li>
-                 <span class="num">4</span>
-                 <span class="local">克鲁克湖</span>
-             </li>
-              <li>
-                 <span class="num">5</span>
-                 <span class="local">托素湖</span>
-             </li>
-              <li>
-                 <span class="num">6</span>
-                 <span class="local">外星人<br>遗址</span>
-             </li>
-              <li>
-                 <span class="num">7</span>
-                 <span class="local">察尔汗<br>盐湖</span>
-             </li>
-              <li>
-                 <span class="num">8</span>
-                 <span class="local">昆仑山<br>水源地</span>
-             </li>
-              <li>
-                 <span class="num">9</span>
-                 <span class="local">昆仑山<br>玉珠峰</span>
-             </li>
-              <li>
-                 <span class="num">10</span>
-                 <span class="local">天下<br>第一哨</span>
-             </li>
-              <li>
-                 <span class="num">11</span>
-                 <span class="local">胡杨林</span>
-             </li>
-             <li>
-                 <span class="local">格尔木<br>返程</span>
-             </li>
-           </ul>
-        </div>-->
-        <!--progressbar e-->
-        
-        <!--progrs s-->
-        <div class="progrs two"><!--根据每个阶段调用不同的类，类为start\one\two\three\four\five\six\seven\eight\nine\ten\eleven\end-->
+
+        <div class="progrs two">
            <img src="../images/progress.png" alt="进度">
         </div>
         <!--progrs s-->
         
     </div>
-    <!--banner e-->
-    <!--imglist s-->
-    <div class="imglist">
-      <ul>
-         <li>
-           <a href="#">
-                 <!--picshow s-->
-                <div class="picshow model1"><!--model1\model2-->
-                   <figure class="figure">
-                      <img src="../images/temp/4.jpg">
-                      <div class="beauty">
-                          <span class="logo"></span>
-                          <span class="text"></span>
-                      </div>
-                   </figure>
-                   <div class="signature posr"><span class="name">小宇宙</span><div class="line"></div></div>
-                </div>
-                <!--picshow e-->
+        <div id="wrapper">
+        <div id="scroller">
+            <div class="imglist" id="scroller-content">
+              <ul >
+                   <li class="add">
+            <a href="javascript:void(0)">
+              <div class="picshow ">
+                <figure class="figure"><img src="../images/add.png"><input type="file" class="uploadimg" accept="image/*"></figure>
+                <div class="signature posr"><span class="name">签名</span><div class="line"></div></div>
+              </div>
             </a>
-            <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>22222</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>29085</div></a>
-            </div>
+            <div class="tips">上传图片生成<!--宣言-->海报</div>
          </li>
-          <li>
-            <a href="#">
-                 <!--picshow s-->
-                <div class="picshow model2">
-                  <figure class="figure">
-                      <img src="../images/temp/4.jpg">
-                      <div class="beauty">
-                          <span class="logo"></span>
-                          <span class="text"></span>
-                      </div>
-                   </figure>
-                   <div class="signature posr"><span class="name">签名</span><div class="line"></div></div>
+
+               </ul>
+            </div>
+            <div id = "scroller-pullUp">
+                <div class="tac">
+                   <button class="nextpagebtn mtb-m"></button>
                 </div>
-                <!--picshow e-->
-            </a>
-            <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>2</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>29085</div></a>
+
+                
+
             </div>
-         </li>
-          <li>
-           <a href="#">
-                 <!--picshow s-->
-                <div class="picshow model1"><!--model1\model2-->
-                   <figure class="figure">
-                      <img src="../images/temp/4.jpg">
-                      <div class="beauty">
-                          <span class="logo"></span>
-                          <span class="text"></span>
-                      </div>
-                   </figure>
-                   <div class="signature posr"><span class="name">小宇宙</span><div class="line"></div></div>
-                </div>
-                <!--picshow e-->
-            </a>
-            <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>22222</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>2</div></a>
-            </div>
-         </li>
-         <li class="noborder">
-           <a href="#">
-                 <!--picshow s-->
-                <div class="picshow model1"><!--model1\model2-->
-                   <figure class="figure">
-                      <img src="../images/temp/4.jpg">
-                      <div class="beauty">
-                          <span class="logo"></span>
-                          <span class="text"></span>
-                      </div>
-                   </figure>
-                   <div class="signature posr"><span class="name">小宇宙</span><div class="line"></div></div>
-                </div>
-                <!--picshow e-->
-            </a>
-            <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>22222</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>29085</div></a>
-            </div>
-         </li>
-         <li class="noborder">
-           <a href="#">
-                 <!--picshow s-->
-                <div class="picshow model1"><!--model1\model2-->
-                   <figure class="figure">
-                      <img src="../images/temp/4.jpg">
-                      <div class="beauty">
-                          <span class="logo"></span>
-                          <span class="text"></span>
-                      </div>
-                   </figure>
-                   <div class="signature posr"><span class="name">小宇宙</span><div class="line"></div></div>
-                </div>
-                <!--picshow e-->
-            </a>
-            <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>22222</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>29085</div></a>
-            </div>
-         </li>
-         <li class="noborder">
-           <a href="#">
-                 <!--picshow s-->
-                <div class="picshow model1"><!--model1\model2-->
-                   <figure class="figure">
-                      <img src="../images/temp/4.jpg">
-                      <div class="beauty">
-                          <span class="logo"></span>
-                          <span class="text"></span>
-                      </div>
-                   </figure>
-                   <div class="signature posr"><span class="name">小宇宙</span><div class="line"></div></div>
-                </div>
-                <!--picshow e-->
-            </a>
-            <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>22222</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>29085</div></a>
-            </div>
-         </li>
+  </div></div></div>
+    <div class="tac clear buttons" id="back">
+       <a href="#" class="btncom" id="backtotop">回到顶部</a>
+       <a href="#" class="btncom uploadbtn" id="uploadfile"><input type="file" accept="image/*">上传图片</a>
+    </div>
+
+
+    <div class="clipimg" id="cropimg">
+      <h6>图片裁剪</h6>
+      <div class="clipwrap" id='clipwrap'>
+         <div class="posr posimg">
+             <a href="javascript:void(0)" class="figure" id="sourceImg"><figure></figure></a>
+            <!-- <div class="area"></div> -->
+         </div>
+      </div>
+      <div class="btngroup">
+        <ul>
+           <li><a href="javascript:void(0)" class="btncom borr-b" id="cropReset">重置</a></li>
+           <li><a href="javascript:void(0)" class="btncom borr-b" id="cropOk">完成裁剪</a></li>
+        </ul>
+      </div>
+  </div>
+
+
+
+  <div class="createpic" id="chooseTemplate">
+  
+    <!--picset s-->
+    <div class="picset">
+      <div class="cont clearfix">
+        <!--picshow s-->
+        <div class="picshow model2"><!--model1\model2-->
+           <figure class="figure">
+               <img src="../images/temp/4.jpg" id="previewImage">
+               <div class="beauty">
+                  <span class="logo"></span>
+                  <span class="text"></span>
+               </div>
+           </figure>
+        </div>
+        <!--picshow e-->
+        
+        <div class="textarea posr">
+           <span class="speacil">我要:</span><textarea placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大胆写出你最想说出的话…"></textarea>
+        </div>
+        
+        <div class="signature posr"><span class="name">叶小萌</span><div class="line"></div></div> 
+      </div>
+    </div>
+    <!--picset e-->
+    
+    <!--seleectmodel s-->
+    <div class="seleectmodel">
+       <ul>
+          <li class="mod1" id="model1"><a><img src="../images/model1.jpg"></a></li>
+          <li class="title">选择模板</li>
+          <li class="mod2" id="model2"><a><img src="../images/model2.jpg"></a></li>
        </ul>
     </div>
-    <!--imglist e-->
+    <!--seleectmodel e-->
     
-    <!--buttons s-->
-    <div class="tac clear buttons">
-       <a href="#" class="btncom">回到顶部</a>
-       <a href="#" class="btncom uploadbtn">上传图片</a>
+    
+    <div class="posr">
+       <div class="allbg">
+           <div class="bottle"></div>
+           <div class="botbgwrap"><div class="botbg"></div></div>
+        </div>
+       <a href="#" class="postbtn btncom2" id="okbtn">点击生成宣言海报</a>
     </div>
-    <!--buttons e-->
-    
-    <div class="tac">
-       <button class="nextpagebtn mtb-m"></button>
-    </div>
-    
-    
   </div>
+
+
+    <!--createpic s-->
+  <div class="createpic imgdetail" id="detail">
+    <!--picset s-->
+    <div class="picset">
+      <div class="cont clearfix">
+        <!--picshow s-->
+        <div class="picshow model1"><!--model1\model2-->
+           <figure class="figure">
+               <img src="../images/temp/4.jpg" id="detailimg">
+               <div class="beauty">
+                  <span class="logo"></span>
+                  <span class="text"></span>
+               </div>
+           </figure>
+        </div>
+        <!--picshow e-->
+        
+        <div class="textarea posr">
+           <span class="speacil">我要:</span>
+          <!-- <textarea placeholder="大胆写出你最想说出的话…"></textarea>-->
+           <span class="text">大胆写出你最想说出的话大胆写出你最想说出的话！</span>
+        </div>
+        
+        <div class="signature posr"><span class="name">签名</span><div class="line"></div></div> 
+      </div>
+    </div>
+    <!--picset e-->
+    
+    <div>
+        <div class="actions">
+               <a href="#"><div class="fav"><span class="icon"></span>2222</div></a>
+               <a href="#"><div class="share"><span class="icon"></span>2222</div></a>
+            </div>
+    </div>
+    
+    
+    <div class="posr scrollfix6">
+       <div class="allbg">
+           <div class="bottle"></div>
+           <div class="botbgwrap"><div class="botbg"></div></div>
+        </div>
+        <div class="btngroup">
+          <ul class="clearfix">
+             <li><a href="#" class="btncom2" onclick="window.location.href='list.html'">回到主页</a></li>
+             <li> <a href="#" class="btncom2 uploadbtn" >上传图片<input type="file" id="uploadimageBtn"></a></li>
+          </ul>
+        </div>
+       
+    </div>
+  </div>
+  
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/underscore-min.js"></script>
+    <script src="../js/swiper.min.js"></script>
+    <script src="../js/iscroll.js"></script>
+    <!-- <script src="../js/exif.js"></script>
+    <script src="../js/megapix-image.js"></script>
+    <script src="../js/hammer.min.js"></script> -->
+    <script src="../js/load-image.all.min.js"></script>
+    <script src="../js/cropper.min.js"></script>
+    <script src="../js/list.js"></script>
 </body>
 </html>
