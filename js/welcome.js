@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-17 13:57:34
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-18 18:46:59
+* @Last Modified time: 2015-07-19 01:17:46
 */
 
 $(function(){
@@ -57,16 +57,8 @@ $(function(){
 
 	disableNode();
 
-    // for(var i=0;i<5;i++){
-    //     $("#node-"+i+"-lock").show();
-    // }
-
-    // for(var i=4;i<10;i++){
-    //     $("#node-"+i+"-unlock").show();
-    // }
-    
     if(storage && storage.getItem('username')){
-		//window.location.href = 'list.html';
+		window.location.href = 'list.html';
 	}
 
     $("path[id^=circle],path[id^=node],text[id^=text]").click(function(){

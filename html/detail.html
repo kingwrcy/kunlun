@@ -8,19 +8,18 @@
 <meta name="keywords"content="昆仑山"> 
 <meta name="description"content="昆仑山微站"> 
 <link rel="stylesheet" type="text/css" href="../css/base.css"/>
+<link rel="stylesheet" href="../css/cropper.min.css">
 </head>
 
 <body class="container">
-  <!--createpic s-->
-  <div class="createpic imgdetail">
-  
+  <div class="createpic imgdetail" id="detail" style="display:block;">
     <!--picset s-->
     <div class="picset">
       <div class="cont clearfix">
         <!--picshow s-->
-        <div class="picshow model1"><!--model1\model2-->
+        <div class="picshow"><!--model1\model2-->
            <figure class="figure">
-               <img src="../images/temp/4.jpg">
+               <img id="detailimg">
                <div class="beauty">
                   <span class="logo"></span>
                   <span class="text"></span>
@@ -42,9 +41,9 @@
     
     <div>
         <div class="actions">
-               <a href="#"><div class="fav"><span class="icon"></span>2222</div></a>
-               <a href="#"><div class="share"><span class="icon"></span>2222</div></a>
-         </div>
+               <a href="#"><div class="fav"><span class="icon"></span><span class="upnum"></span></div></a>
+               <a href="#"><div class="share"><span class="icon"></span><span class="sharenum"></span></div></a>
+            </div>
     </div>
     
     
@@ -55,16 +54,81 @@
         </div>
         <div class="btngroup">
           <ul class="clearfix">
-             <li><a href="#" class="btncom2">回到主页</a></li>
-             <li> <a href="#" class="btncom2 uploadbtn">上传图片</a></li>
+             <li><a href="#" class="btncom2" onclick="window.location.href='list.html'">回到主页</a></li>
+             <li> <a href="#" class="btncom2 uploadbtn" >上传图片<input type="file" class="uploadimg"></a></li>
           </ul>
         </div>
        
     </div>
-    
-   
-    
   </div>
-  <!--createpic e-->
+
+   <div class="createpic" id="chooseTemplate">
+  
+    <!--picset s-->
+    <div class="picset">
+      <div class="cont clearfix">
+        <!--picshow s-->
+        <div class="picshow model2"><!--model1\model2-->
+           <figure class="figure">
+               <img src="../images/temp/4.jpg" id="previewImage">
+               <div class="beauty">
+                  <span class="logo"></span>
+                  <span class="text"></span>
+               </div>
+           </figure>
+        </div>
+        <!--picshow e-->
+        
+        <div class="textarea posr">
+           <span class="speacil">我要:</span><textarea placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大胆写出你最想说出的话…"></textarea>
+        </div>
+        
+        <div class="signature posr"><span class="name">叶小萌</span><div class="line"></div></div> 
+      </div>
+    </div>
+    <!--picset e-->
+    
+    <!--seleectmodel s-->
+    <div class="seleectmodel">
+       <ul>
+          <li class="mod1" id="model1"><a><img src="../images/model1.jpg"></a></li>
+          <li class="title">选择模板</li>
+          <li class="mod2" id="model2"><a><img src="../images/model2.jpg"></a></li>
+       </ul>
+    </div>
+    <!--seleectmodel e-->
+    
+    
+    <div class="posr">
+       <div class="allbg">
+           <div class="bottle"></div>
+           <div class="botbgwrap"><div class="botbg"></div></div>
+        </div>
+       <a href="#" class="postbtn btncom2" id="okbtn">点击生成宣言海报</a>
+    </div>
+  </div>
+
+   <div class="clipimg" id="cropimg">
+      <h6>图片裁剪</h6>
+      <div class="clipwrap" id='clipwrap'>
+         <div class="posr posimg">
+             <a href="javascript:void(0)" class="figure" id="sourceImg"><figure></figure></a>
+            <!-- <div class="area"></div> -->
+         </div>
+      </div>
+      <div class="btngroup">
+        <ul>
+           <li><a href="javascript:void(0)" class="btncom borr-b" id="cropReset">重置</a></li>
+           <li><a href="javascript:void(0)" class="btncom borr-b" id="cropOk">完成裁剪</a></li>
+        </ul>
+      </div>
+  </div>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/load-image.all.min.js"></script>
+    <script src="../js/cropper.min.js"></script>
+    <script src="../js/imageCrop.js"></script>
+    <script src="../js/detail.js"></script>
 </body>
 </html>

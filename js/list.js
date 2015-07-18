@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-18 18:05:45
+ * @Last Modified time: 2015-07-19 01:22:38
  */
 
 
@@ -24,8 +24,8 @@
 		'</div>' +
 		'</a>' +
 		'<div class="actions">' +
-		'<a href="#"><div class="fav"><span class="icon"></span><span class="upnum"><%= data[i].upnum %></span></div></a>' +
-		'<a href="#"><div class="share"><span class="icon"></span><span class="sharenum"><%= data[i].sharenum %></span></div></a>' +
+		'<a href="#"><div class="fav"><span class="icon favicon"></span><span class="upnum"><%= data[i].upuser %></span></div></a>' +
+		'<a href="#"><div class="share"><span class="icon shareicon"></span><span class="sharenum"><%= data[i].sharenum %></span></div></a>' +
 		'</div>' +
 		'</li><% }%>';
 
@@ -130,85 +130,57 @@
 	});
 
 	// var img = null, filereader ,orientation ,cropArea =  $(".area"),left,top,imgRate,initScale = 1,originalWidth = 0,originalHeight = 0;
-	$(".uploadimg,#detail #uploadimageBtn").on('change',function(){
-		var file = this.files[0];
-		var options = {
-			canvas: true
-		};
-		var id = $(this).attr('id');
-		// Use the "JavaScript Load Image" functionality to parse the file data
-	    loadImage.parseMetaData(file, function(data) {
+	
 
-	        // Get the correct orientation setting from the EXIF Data
-	        if (data.exif) {
-	            options.orientation = data.exif.get('Orientation');
-	        }
+	
 
-	        // Load the image from disk and inject it into the DOM with the correct orientation
-	        loadImage(
-	            file,
-	            function(canvas) {
-	            	if(id === 'uploadimageBtn'){
-			    		$(".figure figure").html('');
-			    	}
-	                var imgDataURL = canvas.toDataURL();
-	                var $img = $('<img>').attr('src', imgDataURL).attr('id','originalimg');
-	                $(".figure figure").append($img);
-	                $(".enterindex").hide();
-	                $("#detail").hide();
-			    	$("#cropimg").show();	
-			    	if(id === 'uploadimageBtn'){
-			    		$img.cropper('destory');
-			    	}
-	                // Initiate cropper once the orientation-adjusted image is in the DOM
-	                $img.cropper({
-						aspectRatio: 1 / 1,
-						autoCropArea: 0.8,
-						strict: false,
-						guides: false,
-						highlight: false,
-						dragCrop: false,
-						guides:true,
-						// rotatable:true,
-						cropBoxMovable: true
-						// cropBoxResizable: true
-					});
-					// var data = 
-	            },
-	            options
-	        );
-	    });
+
+	$.getJSON('http://slide.cm/wechat/config?url=http://k3.limijiaoyin.com/third/html/list.html',function(data){
+		wx.config({
+			debug: false,
+			appId: 'wx82a5d90838b461ba',
+			timestamp: data.config.timestamp,
+			nonceStr: data.config.nonceStr,
+			signature: data.config.signature,
+			jsApiList: [
+				'onMenuShareTimeline',
+				'onMenuShareAppMessage'
+			]
+		});
+
+
+
+		wx.ready(function(){
+            wx.onMenuShareAppMessage({
+                 title: "一起去挑战6000，一起去升级人生～",
+                 desc: '我参与了昆仑山雪山矿泉水的晒风景活动，分享就有奖，你也快来参加吧！',
+                 link: 'http://k3.limijiaoyin.com/third/html/list.html',
+                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
+                 trigger: function (res) {
+                 },
+                 success: function (res) {
+                    // window.location.href = 'http://v-wr.limijiaoyin.com/weixin_demo/result.html';
+                 }
+             });
+
+             wx.onMenuShareTimeline({
+                 title: '一起去挑战6000，一起去升级人生～',
+                 link: 'http://k3.limijiaoyin.com/third/html/list.html',
+                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
+                 trigger: function (res) {
+                 },
+                 success: function (res) {
+                     // window.location.href = 'http://v-wr.limijiaoyin.com/weixin_demo/result.html';
+                 }
+             });
+         });
+
 	});
 
-	$("#cropOk").click(function(){
-		var croppedImage = $('#originalimg').cropper('getCroppedCanvas');
-		var b64data = croppedImage.toDataURL("image/jpeg");
-		$("#cropimg").hide();
-		$("#chooseTemplate").show();
-		$("#previewImage").attr('src',b64data);
-	});
-
-	$(".seleectmodel #model1").click(function(){
-		$('#chooseTemplate .picshow').removeClass('model2').addClass('model1');
-		$('#chooseTemplate .signature .name').text('小宇宙');
-	});
-
-	$(".seleectmodel #model2").click(function(){
-		$('#chooseTemplate .picshow').removeClass('model1').addClass('model2');
-		$('#chooseTemplate .signature .name').text('叶小萌');
-	});
-
-	// $("#wrapper").on('click',".fav .icon",function(e){
-
-	// });
-
-	$("#cropReset").click(function(){
-		$('#originalimg').cropper('reset');
-	});
 
 	$('#scroller-content').on('click','li',function(e){
 
-		if(e.target.tagName === 'SPAN' && e.target.classList.contains('icon')){
+		if(e.target.tagName === 'SPAN' && e.target.classList.contains('favicon')){
 			var fav = $(e.target).next();
 			var id = $(e.target).parents("li").attr('vid');
 			e.stopPropagation();
@@ -218,61 +190,18 @@
 				});
 			})
 			return;
+		}else if(e.target.tagName === 'SPAN' && e.target.classList.contains('shareicon')){
+
 		}
 
-		var index = $(this).index();
-		if(index > 0){
-			$('.enterindex').hide();
-			$("#detail").show();
-			$('#detail #detailimg').attr('src',$(this).find('.figure img').attr('src'));
-			$('#detail .signature .name').text($(this).find('.signature .name').text());
-			$('#detail .textarea .text').text($(this).find('.signature').attr('desc'));
-			$('#detail .sharenum').text($(this).find('.sharenum').text());
-			$('#detail .upnum').text($(this).find('.upnum').text());
-		}
-
+		var id = $(this).attr('vid');
+		window.location.href = 'detail.html?id='+id;
 	});
 
 
-	$("#okbtn").click(function(){
-		var b64 = $("#previewImage").attr('src');
-		// console.log(b64);
-		$("#chooseTemplate").hide();
-		$("#detail").show();
-		$('#detail #detailimg').attr('src',b64);
-		$('#detail .signature .name').text($('#chooseTemplate .signature .name').text());
-		$('#detail .textarea .text').text($('#chooseTemplate textarea').val());
-		putb64(b64);
-	});
+	
 
-	function putb64(pic){
-	    var url = "http://up.qiniu.com/putb64/-1";
-	    var xhr = new XMLHttpRequest();
-	    var token = null;
-
-	    $.get('http://k3.limijiaoyin.com/api/third/token/',function(data){
-	    	if(data.code == 0){
-	    		xhr.onreadystatechange=function(){
-			        if (xhr.readyState==4){
-			        	$.post('http://k3.limijiaoyin.com/api/third/cards/',{
-			        		img:'http://7xkb2g.com1.z0.glb.clouddn.com/'+JSON.parse(xhr.responseText).hash,
-			        		desc:$("#chooseTemplate textarea").val(),
-			        		template:$("#chooseTemplate .name").text() === '叶小萌' ? 1 : 0	
-			        	},function(data){
-			        		if(data.code == 0){
-			        			alert('上传成功!');
-			        		}
-			        	})
-			        }
-			    }
-			    xhr.open("POST", url, true); 
-			    xhr.setRequestHeader("Content-Type", "image/jpeg"); 
-			    xhr.setRequestHeader("Authorization", "UpToken "+data.token); 
-			    xhr.send(pic.split(',')[1]);
-	    	}
-	    })
-	    
-	}  
+	
 
 
 	
