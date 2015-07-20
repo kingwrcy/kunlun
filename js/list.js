@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-20 17:17:13
+ * @Last Modified time: 2015-07-20 21:22:34
  */
 
 
@@ -98,7 +98,7 @@
 	var today = new Date();
 	var year = today.getFullYear();
 	var month = today.getMonth()+1;
-	var day = 28 || today.getDate();
+	var day = today.getDate();
 	var imgList = {
 		22:['../images/7-22/1.jpg','../images/7-22/2.jpg'],
 		23:['../images/7-23/1.jpg','../images/7-23/2.jpg'],
@@ -108,7 +108,6 @@
 		27:['../images/7-27/1.jpg','../images/7-27/2.jpg','../images/7-27/3.jpg'],
 		28:['../images/7-28/1.jpg','../images/7-28/2.jpg','../images/7-28/3.jpg','../images/7-28/4.jpg']
 	};
-
 	if(year == '2015' && month == '7'){
 		swiperWrapper.html('');
 		for(var l in imgList){
@@ -118,6 +117,25 @@
 				}
 			}
 		}
+
+		if(day == 22){
+			$(".progrs").addClass('two');
+		}else if (day == 23){
+			$(".progrs").addClass('four');
+		}else if (day == 24){
+			$(".progrs").addClass('six');
+		}else if (day == 25){
+			$(".progrs").addClass('seven');
+		}else if (day == 26){
+			$(".progrs").addClass('eight');
+		}else if (day == 27){
+			$(".progrs").addClass('nine');
+		}else if (day == 28){
+			$(".progrs").addClass('ten');
+		}else if (day == 29){
+			$(".progrs").addClass('eleven');
+		}
+
 	}
 
 
@@ -129,8 +147,9 @@
 		// pagination:'.swiper-pagination'
 	});
 
-	// var img = null, filereader ,orientation ,cropArea =  $(".area"),left,top,imgRate,initScale = 1,originalWidth = 0,originalHeight = 0;
 	
+
+
 
 	
 
@@ -154,8 +173,8 @@
             wx.onMenuShareAppMessage({
                  title: "一起去挑战6000，一起去升级人生～",
                  desc: '我参与了昆仑山雪山矿泉水的晒风景活动，分享就有奖，你也快来参加吧！',
-                 link: '/third/html/list.html',
-                 imgUrl: "/third/images/weixin_logo.jpg",
+                 link: 'http://k3.limijiaoyin.com/third/html/list.html',
+                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
                  trigger: function (res) {
                  },
                  success: function (res) {
@@ -165,8 +184,8 @@
 
              wx.onMenuShareTimeline({
                  title: '一起去挑战6000，一起去升级人生～',
-                 link: '/third/html/list.html',
-                 imgUrl: "/third/images/weixin_logo.jpg",
+                 link: 'http://k3.limijiaoyin.com/third/html/list.html',
+                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
                  trigger: function (res) {
                  },
                  success: function (res) {

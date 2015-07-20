@@ -193,7 +193,7 @@ a,a:visited{ text-decoration:none; outline:none;color:#fff;}
 .progrs.eight:after{width:26%;}
 .progrs.nine:after{width:18%;}
 .progrs.ten:after{width:10%;}
-/*.progrs.eleven:after{width:10%;}*/
+.progrs.eleven:after{width:0;}
 .progrs.end:after{width:0%;}
 
 /*图片列表*/

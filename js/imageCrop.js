@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-19 00:01:12
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-20 17:18:46
+* @Last Modified time: 2015-07-20 21:30:44
 */
 
 
@@ -110,7 +110,7 @@ function putb64(pic){
 		        		owner:$.trim($("#sign").val())
 		        	},function(data){
 		        		if(data.code == 0){
-		        			window.location.href = 'detail.html?id='+data.card.id;
+		        			window.location.href = 'detail.html?id='+data.card.id+'&preview=true';
 		        		}
 		        	})
 		        }
