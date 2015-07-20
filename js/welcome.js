@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-17 13:57:34
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-19 01:17:46
+* @Last Modified time: 2015-07-20 17:17:36
 */
 
 $(function(){
@@ -95,7 +95,7 @@ $(function(){
 		}
 		$.ajax({
 			type:'POST',
-			url:'http://k3.limijiaoyin.com/api/third/user/',
+			url:'/api/third/user/',
 			data:{name:username,phone:tel},
 			success:function(data){
 				if(data.code === 0){

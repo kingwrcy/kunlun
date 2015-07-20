@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-20 10:42:33
+* @Last Modified time: 2015-07-20 17:16:25
 */
 
 $(function(){
@@ -10,7 +10,7 @@ $(function(){
 	var id = null;
 	if(href.match(/id=(\d+)/)){
 		id = href.match(/id=(\d+)/)[1];
-		$.get('http://k3.limijiaoyin.com/api/third/cards/'+id+'/',function(data){
+		$.get('/api/third/cards/'+id+'/',function(data){
 			$('#detail #detailimg').attr('src',data.card[0].img);
 			// $('#detail .signature .name').text(data.card[0].template == '1' ? '叶小萌' : '小宇宙');
 			$('#detail .textarea #desc').text(data.card[0].desc);
@@ -30,7 +30,7 @@ $(function(){
 		$("#share").show();
 	});
 
-	$.post('http://k3.limijiaoyin.com/api/third/visit/',{id:id},function(){});
+	$.post('/api/third/visit/',{id:id},function(){});
 
 
 	$.getJSON('http://slide.cm/wechat/config?url=http://k3.limijiaoyin.com/third/html/detail.html?id='+id,function(data){
@@ -47,7 +47,7 @@ $(function(){
 		});
 
 		function share(){
-			$.post('http://k3.limijiaoyin.com/api/third/share/',{id:id},function(){});
+			$.post('/api/third/share/',{id:id},function(){});
 		}
 
 
@@ -56,8 +56,8 @@ $(function(){
             wx.onMenuShareAppMessage({
                  title: "一起去挑战6000，一起去升级人生～",
                  desc: '我参与了昆仑山雪山矿泉水的晒风景活动，分享就有奖，你也快来参加吧！',
-                 link: 'http://k3.limijiaoyin.com/third/html/detail.html?id='+id,
-                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
+                 link: '/third/html/detail.html?id='+id,
+                 imgUrl: "/third/images/weixin_logo.jpg",
                  trigger: function (res) {
                  },
                  success: function (res) {
@@ -67,8 +67,8 @@ $(function(){
 
              wx.onMenuShareTimeline({
                  title: '一起去挑战6000，一起去升级人生～',
-                 link: 'http://k3.limijiaoyin.com/third/html/detail.html?id='+id,
-                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
+                 link: '/third/html/detail.html?id='+id,
+                 imgUrl: "/third/images/weixin_logo.jpg",
                  trigger: function (res) {
                  },
                  success: function (res) {

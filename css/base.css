@@ -288,7 +288,11 @@ a,a:visited{ text-decoration:none; outline:none;color:#fff;}
 	/*.nav .des{font-size:0.875em; }*/
 	.imglist li{padding:10px 0 10px 7px;}
     .imglist li:nth-child(1){ margin-left:7px;}
-	.picset textarea,.picset input,.picset .textarea .speacil,.picset .textarea .text{ font-size:18px;}
+	
+	.picset .textarea textarea, .picset .textarea input,.picset .textarea .speacil,.picset .textarea .text{ font-size:18px;}
+	.picset textarea,.picset input{ position:relative;top:2px;}
+	.picset .textarea input{ margin-left:50px;}
+	
 	/*.picset .textarea .speacil{top:7px;}*/
 	.createpic .botbgwrap{ height:100px;}
 	.seleectmodel .title{ font-size:0.875em;}

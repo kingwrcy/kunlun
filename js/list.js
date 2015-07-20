@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-19 23:39:54
+ * @Last Modified time: 2015-07-20 17:17:13
  */
 
 
@@ -31,7 +31,7 @@
 
 	function render(limit) {
 		var compiled = _.template(tmpl);
-		$.getJSON('http://k3.limijiaoyin.com/api/third/cards/',{start:start,limit:limit},function(data){
+		$.getJSON('/api/third/cards/',{start:start,limit:limit},function(data){
 			if(data.cards.length == 0){
 				// $("#scroller-pullUp").hide();
 				return;
@@ -154,8 +154,8 @@
             wx.onMenuShareAppMessage({
                  title: "一起去挑战6000，一起去升级人生～",
                  desc: '我参与了昆仑山雪山矿泉水的晒风景活动，分享就有奖，你也快来参加吧！',
-                 link: 'http://k3.limijiaoyin.com/third/html/list.html',
-                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
+                 link: '/third/html/list.html',
+                 imgUrl: "/third/images/weixin_logo.jpg",
                  trigger: function (res) {
                  },
                  success: function (res) {
@@ -165,8 +165,8 @@
 
              wx.onMenuShareTimeline({
                  title: '一起去挑战6000，一起去升级人生～',
-                 link: 'http://k3.limijiaoyin.com/third/html/list.html',
-                 imgUrl: "http://k3.limijiaoyin.com/third/images/weixin_logo.jpg",
+                 link: '/third/html/list.html',
+                 imgUrl: "/third/images/weixin_logo.jpg",
                  trigger: function (res) {
                  },
                  success: function (res) {

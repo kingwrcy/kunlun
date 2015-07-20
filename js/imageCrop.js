@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-19 00:01:12
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-19 19:12:18
+* @Last Modified time: 2015-07-20 17:18:46
 */
 
 
@@ -98,12 +98,12 @@ function putb64(pic){
     	alert('请填写信息');
     	return;
     }
-    $.get('http://k3.limijiaoyin.com/api/third/token/',function(data){
+    $.get('/api/third/token/',function(data){
     	if(data.code == 0){
     		xhr.onreadystatechange=function(){
 		        if (xhr.readyState==4){
 		        	$("#chooseTemplate").hide();
-		        	$.post('http://k3.limijiaoyin.com/api/third/cards/',{
+		        	$.post('/api/third/cards/',{
 		        		img:'http://7xkb2g.com1.z0.glb.clouddn.com/'+JSON.parse(xhr.responseText).hash,
 		        		desc:desc,
 		        		template:template,
