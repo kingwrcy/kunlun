@@ -27,14 +27,23 @@
            </figure>
         </div>
         <!--picshow e-->
-        
+
         <div class="textarea posr">
-           <span class="speacil">我要:</span>
-          <!-- <textarea placeholder="大胆写出你最想说出的话…"></textarea>-->
-           <span class="text">大胆写出你最想说出的话大胆写出你最想说出的话！</span>
+           <div class="inputname">
+              <span class="speacil">我是:</span><span class="text" id="whoami">我是谁</span>
+           </div>
+           <div class="inputntext">
+              <span class="speacil">我要:</span><span class="text" id="desc">大胆写出你最想说出的话大胆写出你最想说出的话大胆写出你最想说出的话大胆写出你最想说出的话</span>
+           </div>
         </div>
+
+      <!--   <div class="textarea posr">
+           <span class="speacil">我要:</span>
+           <textarea placeholder="大胆写出你最想说出的话…"></textarea>
+           <span class="text">大胆写出你最想说出的话大胆写出你最想说出的话！</span>
+        </div> 
         
-        <div class="signature posr"><span class="name">签名</span><div class="line"></div></div> 
+        <div class="signature posr"><span class="name">签名</span><div class="line"></div></div> -->
       </div>
     </div>
     <!--picset e-->
@@ -42,23 +51,23 @@
     <div>
         <div class="actions">
                <a href="#"><div class="fav"><span class="icon"></span><span class="upnum"></span></div></a>
-               <a href="#"><div class="share"><span class="icon"></span><span class="sharenum"></span></div></a>
+               <a href="#"><div class="share"><div id="sharenum"><span class="icon"></span><span class="sharenum"></span></div></div></a>
             </div>
     </div>
     
     
-    <div class="posr scrollfix6">
+    <div class="posr scrollfix6 onebtn">
        <div class="allbg">
            <div class="bottle"></div>
            <div class="botbgwrap"><div class="botbg"></div></div>
         </div>
-        <div class="btngroup">
+       <div class="btngroup">
           <ul class="clearfix">
              <li><a href="#" class="btncom2" onclick="window.location.href='list.html'">回到主页</a></li>
              <li> <a href="#" class="btncom2 uploadbtn" >上传图片<input type="file" class="uploadimg"></a></li>
           </ul>
         </div>
-       
+       <!--  <div class="ontbtngroup"><a href="#" class="btncom2 uploadbtn" >上传图片<input type="file" class="uploadimg"></a></div> -->
     </div>
   </div>
 
@@ -91,9 +100,9 @@
     <!--seleectmodel s-->
     <div class="seleectmodel">
        <ul>
-          <li class="mod1" id="model1"><a><img src="../images/model1.jpg"></a></li>
+          <li class="mod1" id="model1"><a><img src="../images/model1.png"></a></li>
           <li class="title">选择模板</li>
-          <li class="mod2" id="model2"><a><img src="../images/model2.jpg"></a></li>
+          <li class="mod2" id="model2"><a><img src="../images/model2.png"></a></li>
        </ul>
     </div>
     <!--seleectmodel e-->
@@ -122,6 +131,11 @@
            <li><a href="javascript:void(0)" class="btncom borr-b" id="cropOk">完成裁剪</a></li>
         </ul>
       </div>
+  </div>
+
+  <div id="share">
+        <div class="mask"></div>
+        <div class="share-mask"></div>
   </div>
 
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

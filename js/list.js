@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-19 01:22:38
+ * @Last Modified time: 2015-07-19 23:39:54
  */
 
 
@@ -20,7 +20,7 @@
 		'<span class="text"></span>' +
 		'</div>' +
 		'</figure>' +
-		'<div class="signature posr" desc="><%= data[i].desc %>"><span class="name"><%= data[i].template == "1" ? "小宇宙" : "叶小萌"  %></span><div class="line"></div></div>' +
+		//'<div class="signature posr" desc="><%= data[i].desc %>"><span class="name"><%= data[i].template == "1" ? "小宇宙" : "叶小萌"  %></span><div class="line"></div></div>' +
 		'</div>' +
 		'</a>' +
 		'<div class="actions">' +
@@ -193,6 +193,8 @@
 		}else if(e.target.tagName === 'SPAN' && e.target.classList.contains('shareicon')){
 
 		}
+
+		if($(this).hasClass('add'))return;
 
 		var id = $(this).attr('vid');
 		window.location.href = 'detail.html?id='+id;

@@ -2,23 +2,33 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-19 01:22:44
+* @Last Modified time: 2015-07-20 10:42:33
 */
 
 $(function(){
 	var href = window.location.href;
 	var id = null;
-	if(href.match(/\d+$/)){
-		id = href.match(/\d+$/)[0];
+	if(href.match(/id=(\d+)/)){
+		id = href.match(/id=(\d+)/)[1];
 		$.get('http://k3.limijiaoyin.com/api/third/cards/'+id+'/',function(data){
 			$('#detail #detailimg').attr('src',data.card[0].img);
-			$('#detail .signature .name').text(data.card[0].template == '1' ? '叶小萌' : '小宇宙');
-			$('#detail .textarea .text').text(data.card[0].desc);
+			// $('#detail .signature .name').text(data.card[0].template == '1' ? '叶小萌' : '小宇宙');
+			$('#detail .textarea #desc').text(data.card[0].desc);
+			$('#detail .textarea #whoami').text(data.card[0].owner);
 			$('#detail .picshow').addClass(data.card[0].template == '1' ? 'model1' : 'model2');
 			$('#detail .upnum').text(data.card[0].upnum);
 			$('#detail .sharenum').text(data.card[0].sharenum);
+
 		});
 	}
+
+	$("#share").click(function(){
+		$(this).hide();
+	});
+
+	$("#sharenum").click(function(){
+		$("#share").show();
+	});
 
 	$.post('http://k3.limijiaoyin.com/api/third/visit/',{id:id},function(){});
 

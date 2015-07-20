@@ -50,7 +50,7 @@
             <a href="javascript:void(0)">
               <div class="picshow ">
                 <figure class="figure"><img src="../images/add.png"><input type="file" class="uploadimg" accept="image/*"></figure>
-                <div class="signature posr"><span class="name">签名</span><div class="line"></div></div>
+                <!-- <div class="signature posr"><span class="name">签名</span><div class="line"></div></div> -->
               </div>
             </a>
             <div class="tips">上传图片生成<!--宣言-->海报</div>
@@ -107,12 +107,20 @@
            </figure>
         </div>
         <!--picshow e-->
-        
         <div class="textarea posr">
-           <span class="speacil">我要:</span><textarea placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大胆写出你最想说出的话…"></textarea>
+           <div class="inputname">
+              <span class="speacil">我是:</span><input id="sign" type="text" placeholder="写下你的签名…">
+           </div>
+           <div class="inputntext">
+              <span class="speacil">我要:</span><textarea placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大胆写出你最想说出的话…"></textarea>
+           </div>  
         </div>
         
-        <div class="signature posr"><span class="name">叶小萌</span><div class="line"></div></div> 
+        <!-- <div class="textarea posr">
+           <span class="speacil">我要:</span><textarea placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大胆写出你最想说出的话…"></textarea>
+        </div> -->
+        
+        <!-- <div class="signature posr"><span class="name">叶小萌</span><div class="line"></div></div>  -->
       </div>
     </div>
     <!--picset e-->
@@ -120,9 +128,9 @@
     <!--seleectmodel s-->
     <div class="seleectmodel">
        <ul>
-          <li class="mod1" id="model1"><a><img src="../images/model1.jpg"></a></li>
+          <li class="mod1" id="model1"><a><img src="../images/model1.png"></a></li>
           <li class="title">选择模板</li>
-          <li class="mod2" id="model2"><a><img src="../images/model2.jpg"></a></li>
+          <li class="mod2" id="model2"><a><img src="../images/model2.png"></a></li>
        </ul>
     </div>
     <!--seleectmodel e-->

@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-19 00:01:12
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-19 00:28:19
+* @Last Modified time: 2015-07-19 19:12:18
 */
 
 
@@ -93,7 +93,8 @@ function putb64(pic){
     var xhr = new XMLHttpRequest();
     var token = null;
     var desc = $("#chooseTemplate textarea").val();
-    if(!$.trim(desc)){
+    var template = $('#chooseTemplate .picshow').hasClass('model2') ? 1 : 0;
+    if(!$.trim(desc) || !$.trim($("#sign").val())){
     	alert('请填写信息');
     	return;
     }
@@ -105,7 +106,8 @@ function putb64(pic){
 		        	$.post('http://k3.limijiaoyin.com/api/third/cards/',{
 		        		img:'http://7xkb2g.com1.z0.glb.clouddn.com/'+JSON.parse(xhr.responseText).hash,
 		        		desc:desc,
-		        		template:$("#chooseTemplate .name").text() === '叶小萌' ? 1 : 0	
+		        		template:template,
+		        		owner:$.trim($("#sign").val())
 		        	},function(data){
 		        		if(data.code == 0){
 		        			window.location.href = 'detail.html?id='+data.card.id;
