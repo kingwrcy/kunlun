@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-21 15:23:49
+* @Last Modified time: 2015-07-21 20:26:00
 */
 
 $(function(){
@@ -69,8 +69,13 @@ $(function(){
 
 		//分享完成跳转地址
 		function share(){
+			var storage = window.localStorage;
 			$.post('/api/third/share/',{id:id},function(){
-				window.location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739';
+				if(storage && !storage.getItem('share')){
+					storage.setItem('share',true);
+					window.location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739';
+				}
+				
 			});
 		}
 

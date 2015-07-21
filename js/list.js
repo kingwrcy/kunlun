@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-21 15:25:03
+ * @Last Modified time: 2015-07-21 20:27:07
  */
 
 
@@ -168,7 +168,7 @@
 		});
 
 
-
+		var storage = window.localStorage;
 		wx.ready(function(){
             wx.onMenuShareAppMessage({
                  title: "一起去挑战6000，一起去升级人生～",
@@ -178,7 +178,10 @@
                  trigger: function (res) {
                  },
                  success: function (res) {
-                    window.location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739';
+                   if(storage && !storage.getItem('share')){
+						storage.setItem('share',true);
+						window.location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739';
+					}
                  }
              });
 
@@ -189,7 +192,10 @@
                  trigger: function (res) {
                  },
                  success: function (res) {
-                     window.location.href = "http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739";
+                    if(storage && !storage.getItem('share')){
+						storage.setItem('share',true);
+						window.location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739';
+					}
                  }
              });
          });
