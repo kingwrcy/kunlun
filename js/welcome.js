@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-17 13:57:34
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-20 21:22:25
+* @Last Modified time: 2015-07-21 11:21:31
 */
 
 $(function(){
@@ -25,7 +25,7 @@ $(function(){
 		var today = new Date();
 		var year = today.getFullYear();
 		var month = today.getMonth()+1;
-		var day = today.getDate();
+		var day = 22 || today.getDate();
 
 		var rules = {
 				22:['西宁','日月山','倒淌河'],
