@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-21 14:50:07
+* @Last Modified time: 2015-07-21 14:54:51
 */
 
 $(function(){
@@ -11,10 +11,8 @@ $(function(){
 	if(href.match(/id=(\d+)/)){
 		id = href.match(/id=(\d+)/)[1];
 
-		alert(href);
-		alert(href.indexOf('preview=true')>0);
 		if(href.indexOf('preview=true')>0){
-			$('#actions').hide();
+			$('.actions').hide();
 			$('#iwantupload').hide();
 			$('#iwantshare').show();
 		}else{
