@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-21 13:06:18
+ * @Last Modified time: 2015-07-21 15:25:03
  */
 
 
@@ -178,7 +178,7 @@
                  trigger: function (res) {
                  },
                  success: function (res) {
-                    // window.location.href = 'http://v-wr.limijiaoyin.com/weixin_demo/result.html';
+                    window.location.href = 'http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739';
                  }
              });
 
@@ -189,7 +189,7 @@
                  trigger: function (res) {
                  },
                  success: function (res) {
-                     // window.location.href = 'http://v-wr.limijiaoyin.com/weixin_demo/result.html';
+                     window.location.href = "http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?channel=3cacedaae0c5f067f23f82b27b070739";
                  }
              });
          });
