@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-21 13:02:52
+* @Last Modified time: 2015-07-21 14:50:07
 */
 
 $(function(){
@@ -10,16 +10,21 @@ $(function(){
 	var id = null;
 	if(href.match(/id=(\d+)/)){
 		id = href.match(/id=(\d+)/)[1];
+
+		alert(href);
+		alert(href.indexOf('preview=true')>0);
+		if(href.indexOf('preview=true')>0){
+			$('#actions').hide();
+			$('#iwantupload').hide();
+			$('#iwantshare').show();
+		}else{
+			$('#iwantupload').show();
+			$('#iwantshare').hide();
+		}
+
 		$.get('/api/third/cards/'+id+'/',function(data){
 
-			if(href.indexOf('preview=true')>0){
-				$('#actions').hide();
-				$('#iwantupload').hide();
-				$('#iwantshare').show();
-			}else{
-				$('#iwantupload').show();
-				$('#iwantshare').hide();
-			}
+			
 			$('#detail #detailimg').attr('src',data.card[0].img);
 			// $('#detail .signature .name').text(data.card[0].template == '1' ? '叶小萌' : '小宇宙');
 			$('#detail .textarea #desc').text(data.card[0].desc);
