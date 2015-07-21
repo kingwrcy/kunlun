@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-19 00:01:12
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-20 21:30:44
+* @Last Modified time: 2015-07-21 14:26:25
 */
 
 
@@ -94,7 +94,7 @@ function putb64(pic){
     var token = null;
     var desc = $("#chooseTemplate textarea").val();
     var template = $('#chooseTemplate .picshow').hasClass('model2') ? 1 : 0;
-    if(!$.trim(desc) || !$.trim($("#sign").val())){
+    if(!$.trim(desc)){
     	alert('请填写信息');
     	return;
     }
