@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-22 16:36:13
+ * @Last Modified time: 2015-07-22 16:45:40
  */
 
 
@@ -98,7 +98,7 @@
 	var today = new Date();
 	var year = today.getFullYear();
 	var month = today.getMonth()+1;
-	var day = 22 || today.getDate();
+	var day = today.getDate();
 	var imgList = {
 		22:['../images/7-22/1.jpg','../images/7-22/2.jpg'],
 		23:['../images/7-23/1.jpg','../images/7-23/2.jpg'],
