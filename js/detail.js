@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-22 10:16:25
+* @Last Modified time: 2015-07-22 11:18:23
 */
 
 $(function(){
@@ -27,7 +27,7 @@ $(function(){
 			// $('#detail .signature .name').text(data.card[0].template == '1' ? '叶小萌' : '小宇宙');
 			$('#detail .textarea #desc').text(data.card[0].desc);
 			$('#detail .textarea #whoami').text(data.card[0].owner);
-			$('#detail .picshow').addClass(data.card[0].template == '1' ? 'model1' : 'model2');
+			$('#detail .picshow').addClass(data.card[0].template == '1' ? 'model2' : 'model1');
 			$('#detail .upnum').text(data.card[0].upnum);
 			$('#detail .sharenum').text(data.card[0].sharenum);
 
@@ -52,8 +52,8 @@ $(function(){
 
 	$.post('/api/third/visit/',{id:id},function(){});
 
-	var url = 'http://slide.cm/wechat/config?url=http://kunlun.limijiaoyin.com/third/html/detail.html?id='+id;
-	url = href.indexOf('preview=true')>0 ? url + '&preview=true' : url;
+	var url = 'http://slide.cm/wechat/config?url='+window.location.href;
+	// url = href.indexOf('preview=true')>0 ? url + '&preview=true' : url;
 	$.getJSON(url,function(data){
 		wx.config({
 			debug: false,
