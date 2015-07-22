@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-18 23:36:35
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-22 11:18:23
+* @Last Modified time: 2015-07-22 11:31:17
 */
 
 $(function(){
@@ -52,7 +52,7 @@ $(function(){
 
 	$.post('/api/third/visit/',{id:id},function(){});
 
-	var url = 'http://slide.cm/wechat/config?url='+window.location.href;
+	var url = 'http://slide.cm/wechat/config?url='+window.location.href.split('#')[0];
 	// url = href.indexOf('preview=true')>0 ? url + '&preview=true' : url;
 	$.getJSON(url,function(data){
 		wx.config({
