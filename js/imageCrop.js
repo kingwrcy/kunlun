@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-19 00:01:12
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-22 11:19:14
+* @Last Modified time: 2015-07-22 15:27:51
 */
 
 
@@ -34,6 +34,7 @@ $(function(){
 	                $(".enterindex").hide();
 	                $("#detail").hide();
 			    	$("#cropimg").show();	
+			    	$("#back").hide();
 			    	// if(id === 'uploadimageBtn'){
 			    	// 	$img.cropper('destory');
 			    	// }
