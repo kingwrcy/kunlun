@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-22 10:16:16
+ * @Last Modified time: 2015-07-22 13:24:07
  */
 
 
@@ -12,7 +12,7 @@
 	var myScroll;
 	var tmpl = '<% for(var i = 0 ;i <data.length ;i++){ %><li  vid="<%= data[i].id %>" >' +
 		' <a href="#">' +
-		'<div class="picshow <%= data[i].template == "1" ? "model1" : "model2"  %>">' +
+		'<div class="picshow <%= data[i].template == "1" ? "model2" : "model1"  %>">' +
 		' <figure class="figure">' +
 		'<img src="<%= data[i].img %>">' +
 		'<div class="beauty">' +
