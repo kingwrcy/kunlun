@@ -2,7 +2,7 @@
 * @Author: JerryWang
 * @Date:   2015-07-17 13:57:34
 * @Last Modified by:   JerryWang
-* @Last Modified time: 2015-07-21 11:21:31
+* @Last Modified time: 2015-07-22 16:37:36
 */
 
 $(function(){
@@ -11,26 +11,28 @@ $(function(){
 
 
 	/**
-	 *  7.22		西宁，日月山，倒淌河
-		7.23		沙岛，克鲁克
-		7.24		托素湖，外星人遗址
-		7.25		察尔汗盐湖
-		7.26		胡杨林
-		7.27		玉珠峰
-		7.28		工厂，水源地
-		7.29		格尔木返程
+	 *  722 西宁 
+		723 日月山，倒淌河、沙岛、
+		724 克鲁克、托素湖 外星人遗址
+		725 察尔汗盐湖
+		726 胡杨林
+		727 玉珠峰
+		728 工厂 水源地 
+		729格尔木
 	 * @return {[type]} [description]
 	 */
 	function disableNode(){
 		var today = new Date();
 		var year = today.getFullYear();
 		var month = today.getMonth()+1;
-		var day = 22 || today.getDate();
+		var day = today.getDate();
+
+
 
 		var rules = {
-				22:['西宁','日月山','倒淌河'],
-				23:['沙岛','克鲁克'],
-				24:['托素湖','外星人遗址'],
+				22:['西宁'],
+				23:['日月山','倒淌河','沙岛'],
+				24:['克鲁克','托素湖','外星人遗址'],
 				25:['察尔汗盐湖'],
 				26:['胡杨林'],
 				27:['玉珠峰'],

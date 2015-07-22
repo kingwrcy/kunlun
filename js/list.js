@@ -2,7 +2,7 @@
  * @Author: JerryWang
  * @Date:   2015-07-15 15:12:34
  * @Last Modified by:   JerryWang
- * @Last Modified time: 2015-07-22 13:24:07
+ * @Last Modified time: 2015-07-22 16:36:13
  */
 
 
@@ -119,9 +119,9 @@
 		}
 
 		if(day == 22){
-			$(".progrs").addClass('two');
+			$(".progrs").addClass('start');
 		}else if (day == 23){
-			$(".progrs").addClass('four');
+			$(".progrs").addClass('three');
 		}else if (day == 24){
 			$(".progrs").addClass('six');
 		}else if (day == 25){
